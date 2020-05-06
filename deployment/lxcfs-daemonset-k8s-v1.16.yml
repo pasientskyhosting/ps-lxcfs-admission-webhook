@@ -29,15 +29,21 @@ spec:
         - name: lxcfs
           mountPath: /var/lib/lxcfs
           mountPropagation: Bidirectional
-        - name: usr-local
-          mountPath: /usr/local
+        - name: usr-local-bin
+          mountPath: /usr/local/bin
+        - name: opt-lib
+          mountPath: /lxcfs/lib64
       volumes:
       - name: cgroup
         hostPath:
           path: /sys/fs/cgroup
-      - name: usr-local
+      - name: usr-local-bin
         hostPath:
-          path: /usr/local
+          path: /opt/bin
+      - name: opt-lib
+        hostPath:
+          path: /opt/lib
+          type: DirectoryOrCreate
       - name: lxcfs
         hostPath:
           path: /var/lib/lxcfs
